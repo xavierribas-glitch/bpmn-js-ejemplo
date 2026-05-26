@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Herramientas BPMN</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./assets/bpmn.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-top">
+                <div class="header-left">
+                    <h1>Herramientas BPMN</h1>
+                </div>
+            </div>
+
+            <nav class="header-menu">
+                <div class="dropdown">
+                    <button class="menu-item dropbtn">
+                        Herramientas <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+
+                        <button id="modeler-button">
+                            <i class="fa-solid fa-edit"></i> Editor de flujos
+                        </button>
+                        <button id="viewer-button">
+                            <i class="fa-solid fa-eye"></i> Visualizador de flujos
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#modeler-button').click(function () {
+                window.location.href = 'bpmn-modeler.html';
+            });
+
+            $('#viewer-button').click(function () {
+                window.location.href = 'bpmn-viewer.html';
+            });
+        });
+    </script>
+</body>
+
+</html>

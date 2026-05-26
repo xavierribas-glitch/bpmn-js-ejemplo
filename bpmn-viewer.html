@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Herramientas BPMN</title>
+
+    <link rel="stylesheet" href="assets/bpmn.css">
+    <link rel="stylesheet" href="assets/bpmn-js.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="assets/bpmn-navigated-viewer.production.min.js"></script>
+    <script src="assets/acciones-diagrama.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-top">
+                <div class="header-left">
+                    <button class="btn-back" onclick="window.location.href='index.html'">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <h1>Herramientas BPMN 2.0 - Visualizador de flujos</h1>
+                </div>
+            </div>
+
+            <nav class="header-menu">
+                <div class="dropdown">
+                    <button class="menu-item dropbtn">
+                        Archivo <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+
+                        <button id="open-button">
+                            <i class="fa-solid fa-folder-open"></i> Abrir...
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <main class="content">
+            <div id="canvas"></div>
+            <input type="file" id="file-input" accept=".bpmn, .xml" style="display: none;" />
+            <div class="zoom-buttons" style="position: absolute; bottom: 60px; right: 20px; z-index: 10;">
+                <button id="zoom-in" title="Acercar" style="padding: 8px 12px; margin-right: 5px;">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                </button>
+                <button id="zoom-out" title="Alejar" style="padding: 8px 12px; margin-right: 5px;">
+                    <i class="fa-solid fa-magnifying-glass-minus"></i>
+                </button>
+                <button id="zoom-reset" title="Centrar" style="padding: 8px 12px;">
+                    <i class="fa-solid fa-sync"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // viewer instance
+        var bpmnInstance = new BpmnJS({container: '#canvas'});
+
+        $('#zoom-in').click(() => adjustZoom(bpmnInstance, 'in'));
+        $('#zoom-out').click(() => adjustZoom(bpmnInstance, 'out'));
+        $('#zoom-reset').click(() => adjustZoom(bpmnInstance, 'reset'));
+        $('#open-button').click(() => $('#file-input').click());
+        $('#file-input').change((e) => fileInputOnChange(e, bpmnInstance));
+    </script>
+
+    <!--
+      Thanks for trying out our BPMN toolkit!
+
+      If you'd like to learn more about what our library,
+      continue with some more basic examples:
+      * https://github.com/bpmn-io/bpmn-js-examples/overlays
+      * https://github.com/bpmn-io/bpmn-js-examples/interaction
+      * https://github.com/bpmn-io/bpmn-js-examples/colors
+      * https://github.com/bpmn-io/bpmn-js-examples/commenting
+
+      To get a bit broader overview over how bpmn-js works,
+      follow our walkthrough:
+      * https://bpmn.io/toolkit/bpmn-js/walkthrough/
+
+      Related starters:
+      * https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/starter/modeler.html
+    -->
+</body>
+
+</html>
